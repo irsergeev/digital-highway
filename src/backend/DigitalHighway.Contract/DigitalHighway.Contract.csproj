@@ -6,4 +6,20 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="digital-highway-api.yaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <OpenApiReference Include="digital-highway-api.yaml" ClassName="DigitalHighwayClient" Namespace="DigitalHighway.Contract" Options="/GenerateClientClasses:false /GenerateExceptionClasses:false /ResponseArrayType:System.Collections.Generic.IReadOnlyList /ArrayType:System.Collections.Generic.IReadOnlyList /DateType:System.DateOnly /DateTimeType:System.DateTime" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="NSwag.ApiDescription.Client" Version="14.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
 </Project>

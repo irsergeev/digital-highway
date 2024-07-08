@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DigitalHighway.Contract\DigitalHighway.Contract.csproj" />
+    <ProjectReference Include="..\DigitalHighway.Mongodb\DigitalHighway.Mongodb.csproj" />
+  </ItemGroup>
+
 </Project>
