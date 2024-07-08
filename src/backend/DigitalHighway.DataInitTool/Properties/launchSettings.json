@@ -1,0 +1,12 @@
+{
+	"profiles": {
+		"DigitalHighway.DataInitTool": {
+			"commandName": "Project",
+			"commandLineArgs": "--connectionString \"%type_your_connection_string_here%\" --database dbname"
+		},
+		"Docker": {
+			"commandName": "Docker",
+			"publishAllPorts": true
+		}
+	}
+}
