@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalHighway.Host", "DigitalHighway\DigitalHighway.Host\DigitalHighway.Host.csproj", "{2656AC94-6CEA-42F9-8202-F6127BBCDFEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalHighway.Core", "DigitalHighway.Core\DigitalHighway.Core.csproj", "{95B5A2FA-8B2F-4BB7-979A-00D623B06F1C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalHighway.Host", "DigitalHighway.Host\DigitalHighway.Host.csproj", "{B4039699-BDB0-428F-B736-F3283A58FEF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalHighway.Mongodb", "DigitalHighway.Mongodb\DigitalHighway.Mongodb.csproj", "{4458466C-FEF2-4D4D-9197-6E4B2FE57DEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalHighway.Contract", "DigitalHighway.Contract\DigitalHighway.Contract.csproj", "{81067CD6-2AF9-4559-A67A-082A45CC1ABE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{726CC133-4061-443D-8189-C17982B45A0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalHighway.DataInitTool", "DigitalHighway.DataInitTool\DigitalHighway.DataInitTool.csproj", "{B4C93EC4-A7B0-4772-AA7D-D767C896E3CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +21,32 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2656AC94-6CEA-42F9-8202-F6127BBCDFEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2656AC94-6CEA-42F9-8202-F6127BBCDFEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2656AC94-6CEA-42F9-8202-F6127BBCDFEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2656AC94-6CEA-42F9-8202-F6127BBCDFEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95B5A2FA-8B2F-4BB7-979A-00D623B06F1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95B5A2FA-8B2F-4BB7-979A-00D623B06F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95B5A2FA-8B2F-4BB7-979A-00D623B06F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95B5A2FA-8B2F-4BB7-979A-00D623B06F1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4039699-BDB0-428F-B736-F3283A58FEF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4039699-BDB0-428F-B736-F3283A58FEF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4039699-BDB0-428F-B736-F3283A58FEF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4039699-BDB0-428F-B736-F3283A58FEF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4458466C-FEF2-4D4D-9197-6E4B2FE57DEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4458466C-FEF2-4D4D-9197-6E4B2FE57DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4458466C-FEF2-4D4D-9197-6E4B2FE57DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4458466C-FEF2-4D4D-9197-6E4B2FE57DEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81067CD6-2AF9-4559-A67A-082A45CC1ABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81067CD6-2AF9-4559-A67A-082A45CC1ABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81067CD6-2AF9-4559-A67A-082A45CC1ABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81067CD6-2AF9-4559-A67A-082A45CC1ABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4C93EC4-A7B0-4772-AA7D-D767C896E3CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4C93EC4-A7B0-4772-AA7D-D767C896E3CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4C93EC4-A7B0-4772-AA7D-D767C896E3CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4C93EC4-A7B0-4772-AA7D-D767C896E3CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B4C93EC4-A7B0-4772-AA7D-D767C896E3CD} = {726CC133-4061-443D-8189-C17982B45A0E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F8A3200-6817-4392-B744-DF5AADDB1E27}
