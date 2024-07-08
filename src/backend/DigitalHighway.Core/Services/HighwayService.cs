@@ -1,19 +1,23 @@
 ﻿using AutoMapper;
 using DigitalHighway.Contract;
 using DigitalHighway.Core.Interfaces;
+using DigitalHighway.Core.Models.Settings;
 using DigitalHighway.Mongodb.Entities;
 using DigitalHighway.Mongodb.Interfaces;
+using Microsoft.Extensions.Options;
 
 namespace DigitalHighway.Core.Services;
 
 public class HighwayService(
 	IMongodbRepository<Highway> highwayRepository,
 	IMongodbRepository<Track> trackRepository,
-	IMapper mapper) : IHighwayService
+	IMapper mapper,
+	IOptions<ApplicationSettings> applicationSettings) : IHighwayService
 {
 	private readonly IMongodbRepository<Highway> _highwayRepository = highwayRepository;
 	private readonly IMongodbRepository<Track> _trackRepository = trackRepository;
 	private readonly IMapper _mapper = mapper;
+	private readonly ApplicationSettings _applicationSettings = applicationSettings.Value;
 
 	public async Task<HighwayResponse> GetHighwayByIdAsync(string id)
 	{
@@ -72,9 +76,9 @@ public class HighwayService(
 
 			var points = new List<int>();
 
-			for (int i = 0; i <= 20; i++)
+			for (int i = 0; i < _applicationSettings.MaxPointsInHighwayMetadata; i++)
 			{
-				if (tracks.Count <= i) break;
+				if (tracks.Count <= (i+1)) break;
 
 				points.Add(tracks[i].StartPoint.Height);
 			}
