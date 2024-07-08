@@ -1,0 +1,25 @@
+.panelContainer{
+
+    .minMetadataContainer{
+        align-content: center;
+        height: 60px;
+        background-color: #cccccc;
+        padding-left: 15px;
+    }
+
+    .metadataDetailPanel{
+        position: absolute;
+        height: 100%;
+        z-index: 99;
+        width: 100%;
+        top: 0;
+        left: 0;
+
+        .cancelIcon{
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding-left: 15px;
+        }
+    }
+}

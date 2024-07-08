@@ -1,0 +1,30 @@
+@import '../style.global.scss';
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+
+    .header{
+        font-weight: bold;
+        padding-bottom: 5px;
+    }
+
+    .distance-info{
+        color: $grey-color;
+    }
+
+    .tracks-info{
+        color: $grey-color;
+    }
+
+    .mini-chart{
+        padding: 5px 0;
+    }
+}
+
+.main-text{
+    font-weight: bold;
+    color: $black-color;
+}

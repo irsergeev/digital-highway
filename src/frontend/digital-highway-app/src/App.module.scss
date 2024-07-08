@@ -1,0 +1,40 @@
+@import "./style.global.scss";
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+
+    > div {
+        height: 100%;
+    }
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+
+    .mainContainer{
+        display: flex;
+
+        .chartContainer{
+            background-color: #ebebeb;
+            width: 100%;
+        }
+    }
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+    background-color: $white-color;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: $blue-color;
+    border-radius: 5px;
+}
