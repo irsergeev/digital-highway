@@ -17,7 +17,7 @@ export const HighwayPanel : React.FC<HighwayPanelProps> = ({ highwayMetadataArra
 
 
     return(
-        <div className={css.panelContainer} style={ isBigScreen ? { width: '20vw' } : { width: `${PANEL_SIZE}px` }}>
+        <div className={css.panelContainer} style={ isBigScreen ? { width: '20vw' } : isSmallScreen ? { width: '100%' } : { width: `${PANEL_SIZE}px` } }>
             {isSmallScreen ? (
                 <div className={css.minMetadataContainer} onClick={() => setShowMetadata(!showMetadata)}>
                     {showMetadata ? (

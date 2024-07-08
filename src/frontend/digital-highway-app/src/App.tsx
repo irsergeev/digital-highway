@@ -49,7 +49,7 @@ export function App() {
     <div className={css.app} style={{ fontFamily: `${highwayTheme.typography.fontFamily}` }}>
       { !isBigScreen ? (
         <div className={css.mainContainer} style={ isSmallScreen ? { flexDirection: 'column' } : {}}>
-          <div className={css.metadataContainer} style={ isSmallScreen ? {} : { width: `${METADATA_PANEL_WIDTH}px` }}>
+          <div className={css.metadataContainer} style={ isSmallScreen ? { width: '100%' } : { width: `${METADATA_PANEL_WIDTH}px` }}>
             <HighwayPanel highwayMetadataArray={highwaysMetadata} changeSelectedHighway={setSelectedHighwayId} />
           </div>
           <div className={css.chartContainer}>
