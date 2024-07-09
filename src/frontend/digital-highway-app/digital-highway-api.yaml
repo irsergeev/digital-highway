@@ -1,0 +1,179 @@
+openapi: 3.0.3
+info:
+  title: digital-highway-api
+  description: API contract for the DigitalHighway service
+  version: "1.0"
+servers:
+  - url: "http://localhost:3000/api/v1"
+tags:
+  - name: highway
+  - name: highwayMetadata
+paths:
+  /highway/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      description: Retruns information about highway (include tracks and its points)
+      operationId: getHighwayById
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HighwayResponse"
+        400:
+          $ref: "#/components/responses/400"
+        404:
+          $ref: "#/components/responses/404"
+        500:
+          $ref: "#/components/responses/500"
+      tags:
+        - highway
+  /highway/metadata:
+    get:
+      description: Returns highways metadata
+      operationId: getHighwaysMetadata
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HighwayMetadataListResponse"
+        400:
+          $ref: "#/components/responses/400"
+        404:
+          $ref: "#/components/responses/404"
+        500:
+          $ref: "#/components/responses/500"
+      tags:
+        - highwayMetadata
+
+components:
+  schemas:
+    HighwayResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        parts:
+          type: array
+          items:
+            $ref: "#/components/schemas/HighwayPartDto"
+
+    HighwayMetadataListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/HighwayMetadataDto"
+
+    HighwayPartDto:
+      type: object
+      properties:
+        order:
+          type: integer
+          format: int32
+        track:
+          $ref: "#/components/schemas/TrackDto"
+
+    TrackDto:
+      type: object
+      properties:
+        id:
+          type: string
+        distance:
+          type: integer
+          format: int64
+        surfaceType:
+          type: integer
+          format: int32
+        maxSpeed:
+          type: integer
+          format: int32
+        startPoint:
+          $ref: "#/components/schemas/PointDto"
+        endPoint:
+          $ref: "#/components/schemas/PointDto"
+
+    HighwayMetadataDto:
+      type: object
+      properties:
+        id:
+          type: string
+        tracksCount:
+          type: integer
+          format: int32
+        totalDistance:
+          type: integer
+          format: int64
+        points:
+          type: array
+          items:
+            type: integer
+            format: int32
+
+    PointDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        height:
+          type: integer
+          format: int32
+
+    Response:
+      type: object
+      description: Request processing result
+      properties:
+        data:
+          type: object
+          description: Response body
+        errors:
+          type: array
+          items:
+            $ref: "#/components/schemas/Error"
+          title: Errors list
+
+    Error:
+      type: object
+      description: Contains error information
+      required:
+        - description
+      properties:
+        description:
+          type: string
+          description: Error text
+          example: Unexpected error
+          title: Error text
+        details:
+          type: string
+          description: Error details
+
+  responses:
+    200:
+      description: OK
+    400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "#/components/schemas/Response"
+    404:
+      description: Not found
+    500:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "#/components/schemas/Response"
