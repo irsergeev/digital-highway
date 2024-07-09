@@ -6,6 +6,8 @@ namespace DigitalHighway.Host;
 
 public static class Program
 {
+	const string ALLOW_ALL_CORS = "all-cors";
+
 	public static async Task Main(string[] args)
 	{
 		var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +19,17 @@ public static class Program
 		builder.Services.AddOptions<MongoSettings>().Bind(builder.Configuration.GetSection(nameof(MongoSettings)));
 		builder.Services.AddOptions<ApplicationSettings>().Bind(builder.Configuration.GetSection(nameof(ApplicationSettings)));
 
+		builder.Services.AddCors(options =>
+		{
+			options.AddPolicy(ALLOW_ALL_CORS, builder =>
+			{
+				builder
+					.AllowAnyHeader()
+					.AllowAnyMethod()
+					.AllowAnyOrigin();
+			});
+		});
+
 		var app = builder.Build();
 
 		if (app.Environment.IsDevelopment())
@@ -24,6 +37,8 @@ public static class Program
 			app.UseSwagger();
 			app.UseSwaggerUI();
 		}
+
+		app.UseCors(ALLOW_ALL_CORS);
 
 		app.UseDigitalHighwayEndpoints();
 		await app.RunAsync();
