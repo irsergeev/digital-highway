@@ -25,3 +25,7 @@ Compose файл выпонит следующие действия:
 - Соберет и выполнит приложение **Data prepare tool**
 
 - Соберет и развернет основной **API Сервис**
+
+## Frontend часть
+
+Для развертывания frontend части приложения необходимо ознакомиться с **README** файлом [здесь](https://github.com/irsergeev/digital-highway/blob/develop/src/frontend/digital-highway-app/README.md)
