@@ -6,9 +6,9 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ENV PATH="$PATH:/root/.dotnet/tools"
 
-COPY ./src ./src
+COPY ./ ./
 
-WORKDIR /src/backend/DigitalHighway.Host
+WORKDIR /DigitalHighway.Host
 RUN dotnet publish "DigitalHighway.Host.csproj" -c Release -o /app/publish
 
 # main container

@@ -41,3 +41,6 @@ msbuild.wrn
 build.schema.json
 
 .idea
+
+node_modules
+.vscode

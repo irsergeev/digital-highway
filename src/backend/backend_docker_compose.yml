@@ -1,0 +1,48 @@
+name: highway-app
+services:
+  # MongoDB
+  mongodb:
+    image: mongo:latest
+    container_name: digital-highway-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: HighwayDB
+    volumes:
+      - mongo-data:/data/db
+
+  # Tools
+  init_mongodb_data_tool:
+    container_name: init_mongodb_data_tool
+    build:
+      context: "../backend"
+      dockerfile: /DigitalHighway.DataInitTool/Dockerfile
+    entrypoint: ["dotnet", "DigitalHighway.DataInitTool.dll"]
+    command:
+      [
+        "--connectionString",
+        "mongodb://mongodb:27017/",
+        "--database",
+        "HighwayDB",
+      ]
+
+  # Services
+  digital_highway_api:
+    container_name: digital_highway_api
+    build:
+      context: "../backend"
+      dockerfile: /DigitalHighway.Host/Dockerfile
+    ports:
+      - "60381:60381"
+    depends_on:
+      init_mongodb_data_tool:
+        condition: service_completed_successfully
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:60381
+      ApplicationSettings__MaxPointsInHighwayMetadata: 10
+      MongoSettings__ConnectionString: mongodb://mongodb:27017/
+      MongoSettings__DatabaseName: HighwayDB
+
+volumes:
+  mongo-data:

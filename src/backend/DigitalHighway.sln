@@ -7,13 +7,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalHighway.Core", "Digi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalHighway.Host", "DigitalHighway.Host\DigitalHighway.Host.csproj", "{B4039699-BDB0-428F-B736-F3283A58FEF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalHighway.Mongodb", "DigitalHighway.Mongodb\DigitalHighway.Mongodb.csproj", "{4458466C-FEF2-4D4D-9197-6E4B2FE57DEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalHighway.Mongodb", "DigitalHighway.Mongodb\DigitalHighway.Mongodb.csproj", "{4458466C-FEF2-4D4D-9197-6E4B2FE57DEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalHighway.Contract", "DigitalHighway.Contract\DigitalHighway.Contract.csproj", "{81067CD6-2AF9-4559-A67A-082A45CC1ABE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalHighway.Contract", "DigitalHighway.Contract\DigitalHighway.Contract.csproj", "{81067CD6-2AF9-4559-A67A-082A45CC1ABE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{726CC133-4061-443D-8189-C17982B45A0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalHighway.DataInitTool", "DigitalHighway.DataInitTool\DigitalHighway.DataInitTool.csproj", "{B4C93EC4-A7B0-4772-AA7D-D767C896E3CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalHighway.DataInitTool", "DigitalHighway.DataInitTool\DigitalHighway.DataInitTool.csproj", "{B4C93EC4-A7B0-4772-AA7D-D767C896E3CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{8B89B9C6-D290-4923-9BD3-BCBF7BC8800D}"
+	ProjectSection(SolutionItems) = preProject
+		backend_docker_compose.yml = backend_docker_compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
