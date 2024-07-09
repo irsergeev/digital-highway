@@ -16,13 +16,17 @@ export const useResponsive = () => {
 
             setWindowHeight(window.innerHeight);
             setWindowWidth(window.innerWidth);
+            
+            // console.log('width: ', window.innerWidth);
+            // console.log('height: ', window.innerHeight);
+            // console.log('from component - is small screen? ', isSmallScreen);
         }
 
         handleResize();
         window.addEventListener('resize', handleResize);
 
         return (() => { window.removeEventListener('resize', handleResize) });
-    }, []);
+    });
 
     return { isSmallScreen, isBigScreen, windowHeight, windowWidth };
 }
