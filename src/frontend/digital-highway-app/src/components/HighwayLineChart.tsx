@@ -3,9 +3,9 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceArea } 
 import { Highway, HighwayPart } from '../types';
 import { Blocker } from './Blocker';
 import { HighwayChartTooltip } from './HighwayChartTooltip';
-import { HighwayApi } from '../generated';
 import { highwayTheme } from '../theme';
 import { useResponsive } from '../hooks/useResponsive';
+import { GetHighwayApi } from '../services';
 
 interface HighwayLineChartProps {
     highwayId: string,
@@ -35,30 +35,14 @@ export const HighwayLineChart : React.FC<HighwayLineChartProps> = ({ highwayId, 
   const [chartData, setChartData] = useState<ChartItem[]>([]);
   const [lineChartWidth, setLineChartWidth] = useState<number>(chartWidth);
   const [chartLineWidth, setChartLineWidth] = useState<number>();
-  const { isBigScreen } = useResponsive();
+  const { isSmallScreen, isBigScreen } = useResponsive();
 
-  function UpdateChart(highway: Highway){
-    setChartData([]);
-    var totalDistance : number = 0;
-    
-    var draft: ChartItem[] = [];
-    highway?.parts?.forEach((item) => {
-      var startItem: Item = { distance: totalDistance, height: item?.track?.startPoint?.height ?? 0, name: item?.track?.startPoint?.name ?? '' };
-      totalDistance = totalDistance + item?.track?.distance ?? 0;
-      var endItem: Item = { distance: totalDistance, height: item?.track?.endPoint?.height ?? 0, name: item?.track?.endPoint?.name ?? '' };
-
-      draft.push({ order: item.order, items: [startItem, endItem], maxSpeed: item.track?.maxSpeed, surfaceType: item.track?.surfaceType });
-    });
-
-    setChartData(draft);
-  }
-
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     if(isBigScreen) 
       setChartLineWidth(5); 
     else 
-      setLineChartWidth(2) 
-  }, [isBigScreen]);
+      setChartLineWidth(2) 
+  }, [isBigScreen, isSmallScreen]);
   
   React.useEffect(() => { setLineChartWidth(chartWidth) }, [chartWidth])
 
@@ -66,7 +50,7 @@ export const HighwayLineChart : React.FC<HighwayLineChartProps> = ({ highwayId, 
     setLoading(true);
 
     const getHighwaysMetadata = async () => {
-      const api = new HighwayApi();
+      const api = GetHighwayApi();
       var result = await api.getHighwayById(highwayId);
 
       const highway: Highway = {
@@ -86,6 +70,23 @@ export const HighwayLineChart : React.FC<HighwayLineChartProps> = ({ highwayId, 
     }
 
   }, [highwayId]);
+
+  function UpdateChart(highway: Highway){
+    setChartData([]);
+    var totalDistance : number = 0;
+    
+    var draft: ChartItem[] = [];
+    highway?.parts?.forEach((item) => {
+      var startItem: Item = { distance: totalDistance, height: item?.track?.startPoint?.height ?? 0, name: item?.track?.startPoint?.name ?? '' };
+      totalDistance = totalDistance + item?.track?.distance ?? 0;
+      var endItem: Item = { distance: totalDistance, height: item?.track?.endPoint?.height ?? 0, name: item?.track?.endPoint?.name ?? '' };
+
+      draft.push({ order: item.order, items: [startItem, endItem], maxSpeed: item.track?.maxSpeed, surfaceType: item.track?.surfaceType });
+    });
+
+    setChartData(draft);
+  }
+
 
   function getTrackColor(maxSpeed: number){
     switch (maxSpeed){
